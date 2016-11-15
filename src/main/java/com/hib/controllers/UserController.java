@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @RequestMapping(value="/register")
-    public void addUser(HttpServletResponse response, String email, String name, String password) {
+    public void register(HttpServletResponse response, String email, String name, String password) {
         try {
             if(ur.findByEmail(email) == null) {
                 User user = new User(email, name, Security.encrypt(password));

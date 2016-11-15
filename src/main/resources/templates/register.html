@@ -3,19 +3,23 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Login</title>
+    <title>Register</title>
 </head>
 <body>
 
 <h1>Register new user</h1>
 
 <form th:action="@{/user/register}" method="POST">
-    Email: <input type="text" name="email" required="true" />
-    Password: <input type="password" name="password" required="true" />
-    Re-enter Password: <input type="password" name="password2" required="true" />
-    Name: <input type="text" name="name" required="true" />
+    Email: <input type="text" name="email" required="true" /><br />
+    Password: <input type="password" name="password" required="true" /><br />
+    Re-enter Password: <input type="password" name="password2" required="true" /><br />
+    Name: <input type="text" name="name" required="true" /><br />
     <input type="submit" value="Register" />
 </form>
+
+<br /><br />
+
+<a href="/login">Already have a user?</a>
 
 </body>
 </html>

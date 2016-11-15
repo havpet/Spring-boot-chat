@@ -20,4 +20,9 @@ public class ViewController {
     public String registerPage(Model model) {
         return "register";
     }
+
+    @RequestMapping("/chat")
+    public String chatPage(Model model) {
+        return "chat";
+    }
 }
