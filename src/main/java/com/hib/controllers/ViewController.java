@@ -15,4 +15,9 @@ public class ViewController {
     public String loginPage(Model model) {
         return "login";
     }
+
+    @RequestMapping("/register")
+    public String registerPage(Model model) {
+        return "register";
+    }
 }

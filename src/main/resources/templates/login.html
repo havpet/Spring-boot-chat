@@ -7,9 +7,9 @@ xmlns:th="http://www.thymeleaf.org">
 </head>
 <body>
 
-<h1>Login page</h1>
+<h1>You need to log in to participate</h1>
 
-    <form th:action="@{/login}" method="POST">
+    <form th:action="@{/user/login}" method="POST">
         Email: <input type="text" name="email" />
         Password: <input type="password" name="password" />
         <input type="submit" value="Sign in" />
