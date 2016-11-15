@@ -2,11 +2,40 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Chat</title>
+    <title>Spring Boot Chat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <link type="text/css" href="chatstyles.css" rel="stylesheet" />
 </head>
 <body>
 
-<h1>This is the chat</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="style2">Chat!</h1>
+            <div class="chatArea">
+                <div class="messages">
+
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Your message" aria-describedby="basic-addon2" />
+                    <span class="input-group-addon" id="basic-addon2">Send</span>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+        <div class="col-md-4">
+            <h1 class="style1">Participants</h1>
+            <div class="chatArea">
+
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

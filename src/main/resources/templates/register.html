@@ -4,22 +4,31 @@
 <head>
     <meta charset="UTF-8" />
     <title>Register</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <link type="text/css" href="styles.css" rel="stylesheet" />
 </head>
 <body>
 
-<h1>Register new user</h1>
 
-<form th:action="@{/user/register}" method="POST">
-    Email: <input type="text" name="email" required="true" /><br />
-    Password: <input type="password" name="password" required="true" /><br />
-    Re-enter Password: <input type="password" name="password2" required="true" /><br />
-    Name: <input type="text" name="name" required="true" /><br />
-    <input type="submit" value="Register" />
-</form>
 
-<br /><br />
+<div id="wrapper">
+    <div id="loginFields">
+        <h1>New User</h1>
+        <br />
+        <form th:action="@{/user/register}" method="POST">
+            Email: <input type="text" class="form-control" name="email" required="true" /><br />
+            Password: <input type="password" class="form-control" name="password" required="true" /><br />
+            Name: <input type="text" class="form-control" name="name" required="true" />
+            <input class="btn btn-default" type="submit" value="Register" />
+        </form>
 
-<a href="/login">Already have a user?</a>
+        <br /><br />
+
+        <a href="/login">Already have a user?</a>
+    </div>
+</div>
 
 </body>
 </html>

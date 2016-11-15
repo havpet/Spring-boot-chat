@@ -4,20 +4,29 @@ xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+    <link type="text/css" href="styles.css" rel="stylesheet" />
 </head>
 <body>
 
-<h1>You need to log in to participate</h1>
+<div id="wrapper">
+    <div id="loginFields">
+        <h1>Spring Boot Chat</h1>
+        <br />
+            <form th:action="@{/user/login}" method="POST">
+                Email: <input type="text" class="form-control" name="email" /><br />
+                Password: <input type="password" class="form-control" name="password" />
+                <input class="btn btn-default" type="submit" value="Sign in" />
+            </form>
 
-    <form th:action="@{/user/login}" method="POST">
-        Email: <input type="text" name="email" /><br />
-        Password: <input type="password" name="password" /><br />
-        <input type="submit" value="Sign in" />
-    </form>
+    <br /><br />
 
-<br /><br />
+    <a href="/register">Register new user</a>
 
-<a href="/register">Register new user</a>
+    </div>
+
+</div>
 
 </body>
 </html>

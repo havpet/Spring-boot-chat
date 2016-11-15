@@ -1,0 +1,27 @@
+body {
+    background: #444c5c;
+}
+
+.style1 {
+    color:#78A5A3;
+}
+
+.style2 {
+    color:#E1B16A;
+}
+
+.chatArea {
+    background-color:#efefef;
+    border-radius:6px;
+    width:100%;
+    height:400px;
+    padding:10px;
+    line-height:1.5em;
+    font-size:1.2em;
+    border:2px solid #78A5A3;
+}
+
+.messages {
+    height:330px;
+    overflow: scroll;
+}
