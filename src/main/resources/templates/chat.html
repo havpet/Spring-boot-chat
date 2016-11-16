@@ -31,7 +31,9 @@
         <div class="col-md-4">
             <h1 class="style1">Participants</h1>
             <div class="chatArea">
-
+                <table>
+                    <tr><td th:text="${#httpSession.getAttribute('user')}"></td></tr>
+                </table>
             </div>
         </div>
     </div>

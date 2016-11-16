@@ -4,6 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by haava on 11/6/2016.
  */
@@ -22,7 +24,13 @@ public class ViewController {
     }
 
     @RequestMapping("/chat")
-    public String chatPage(Model model) {
-        return "chat";
+    public String chatPage(Model model, HttpSession session) {
+        if(session.getAttribute("user") == null) {
+            return "login";
+        }
+        else {
+            return "chat";
+        }
+
     }
 }

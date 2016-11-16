@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.Collection;
 
 /**
@@ -34,7 +36,7 @@ public class UserController {
             if(ur.findByEmail(email) == null) {
                 User user = new User(email, name, Security.encrypt(password));
                 ur.save(user);
-                response.sendRedirect("/chat");
+                response.sendRedirect("/login");
             }
 
             else {
@@ -49,12 +51,13 @@ public class UserController {
     }
 
     @RequestMapping(value="/login", method = RequestMethod.POST)
-    public void login(HttpServletResponse response, String email, String password) {
+    public void login(HttpSession session, HttpServletResponse response, String email, String password) {
         User user = ur.findByEmail(email);
         try {
             if(user != null) {
                 String encryptedPassword = user.getPassword();
                 if(Security.matches(password, encryptedPassword)) {
+                    session.setAttribute("user", user.getName());
                     response.sendRedirect("/chat");
                 }
                 else {
