@@ -15,12 +15,14 @@
             <h1 class="style2">Chat!</h1>
             <div class="chatArea">
                 <div class="messages">
-
+                    <tr th:each="message : ${messages}">
+                        <b><td th:text="${message.name}"></td>: </b><td th:text="${message.content}"></td><br />
+                    </tr>
                 </div>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Your message" aria-describedby="basic-addon2" />
-                    <span class="input-group-addon" id="basic-addon2">Send</span>
-                </div>
+                    <form th:action="@{/chat/newMessage}" method="POST">
+                        <input class="form-control" name="content" type="content"  placeholder="Your message" aria-describedby="basic-addon2" style="width:80%;float:left;" autofocus="true" />
+                        <input class="btn btn-default" value="Send" type="submit" style="width:20%;float:left;"/>
+                    </form>
 
 
             </div>
@@ -32,7 +34,9 @@
             <h1 class="style1">Participants</h1>
             <div class="chatArea">
                 <table>
-                    <tr><td th:text="${#httpSession.getAttribute('user')}"></td></tr>
+                    <tr th:each="users : ${activeUsers}">
+                        <td th:text="${users.user}"></td><br />
+                    </tr>
                 </table>
             </div>
         </div>

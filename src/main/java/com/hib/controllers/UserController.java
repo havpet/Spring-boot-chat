@@ -4,13 +4,10 @@ import com.hib.entities.User;
 import com.hib.repositories.UserRepository;
 import com.hib.tools.Security;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Collection;
@@ -30,7 +27,7 @@ public class UserController {
         return ur.findAll();
     }
 
-    @RequestMapping(value="/register")
+    @RequestMapping(value="/register", method = RequestMethod.POST)
     public void register(HttpServletResponse response, String email, String name, String password) {
         try {
             if(ur.findByEmail(email) == null) {
@@ -58,6 +55,7 @@ public class UserController {
                 String encryptedPassword = user.getPassword();
                 if(Security.matches(password, encryptedPassword)) {
                     session.setAttribute("user", user.getName());
+                    session.setAttribute("id", user.getId());
                     response.sendRedirect("/chat");
                 }
                 else {

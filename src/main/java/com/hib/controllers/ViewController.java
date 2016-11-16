@@ -1,5 +1,6 @@
 package com.hib.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,9 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class ViewController {
 
+    @Autowired
+    ChatController chatController;
+
     @RequestMapping("/login")
     public String loginPage(Model model) {
         return "login";
@@ -25,10 +29,13 @@ public class ViewController {
 
     @RequestMapping("/chat")
     public String chatPage(Model model, HttpSession session) {
-        if(session.getAttribute("user") == null) {
-            return "login";
+        if(session.getAttribute("id") == null) {
+            //login
+            return "chat";
         }
         else {
+            model.addAttribute("messages", chatController.getAllMessages());
+            model.addAttribute("activeUsers", );
             return "chat";
         }
 
