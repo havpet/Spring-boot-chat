@@ -1,13 +1,11 @@
 package com.hib.controllers;
 
 import com.hib.entities.Message;
-import com.hib.entities.User;
 import com.hib.repositories.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -17,7 +15,7 @@ import java.util.List;
  * Created by Håvard on 11/16/2016.
  */
 
-@RestController
+@Controller
 @RequestMapping("chat")
 public class ChatController {
 

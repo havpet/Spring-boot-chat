@@ -3,6 +3,7 @@ package com.hib.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by haava on 11/3/2016.
@@ -15,8 +16,13 @@ public class User {
     @GeneratedValue
     private Long id;
 
+    @NotNull
     private String email;
+
+    @NotNull
     private String name;
+
+    @NotNull
     private String password;
 
     public User() {

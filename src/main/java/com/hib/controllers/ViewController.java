@@ -30,12 +30,10 @@ public class ViewController {
     @RequestMapping("/chat")
     public String chatPage(Model model, HttpSession session) {
         if(session.getAttribute("id") == null) {
-            //login
-            return "chat";
+            return "login";
         }
         else {
             model.addAttribute("messages", chatController.getAllMessages());
-            model.addAttribute("activeUsers", );
             return "chat";
         }
 
