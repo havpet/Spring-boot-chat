@@ -21,7 +21,9 @@ body {
     border:2px solid #78A5A3;
 }
 
-.messages {
+#messagesDiv {
     height:330px;
-    overflow: scroll;
+    overflow-y:scroll;
+    width:100%;
+    word-break:break-all;
 }
