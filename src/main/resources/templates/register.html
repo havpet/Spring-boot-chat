@@ -18,9 +18,9 @@
         <h1>New User</h1>
         <br />
         <form th:action="@{/user/register}" method="POST">
-            Email: <input type="text" class="form-control" name="email" required="true" /><br />
-            Password: <input type="password" class="form-control" name="password" required="true" /><br />
-            Name: <input type="text" class="form-control" name="name" required="true" />
+            Email: <input autocomplete="off" type="text" class="form-control" name="email" required="true" /><br />
+            Password: <input autocomplete="off" type="password" class="form-control" name="password" required="true" /><br />
+            Name: <input autocomplete="off" type="text" class="form-control" name="name" required="true" />
             <input class="btn btn-default" type="submit" value="Register" />
         </form>
 
