@@ -3,6 +3,9 @@ package com.hib.controllers;
 import com.hib.entities.Message;
 import com.hib.repositories.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
@@ -29,15 +32,12 @@ public class ChatController {
     @RequestMapping(value="/messages", method=RequestMethod.POST)
     @MessageMapping("/newMessage")
     @SendTo("/topic/newMessage")
-    public List<Message> newMessage(SimpMessageHeaderAccessor headerAccessor, String content) {
-        Map<String, Object> attrs = headerAccessor.getSessionAttributes();
-        Message message = new Message(content, (Long) attrs.get("id"), (String) attrs.get("user"));
+    public Message newMessage(Message m) {
+        Message message = new Message(m.getContent(), m.getUserId(), m.getName());
         mr.save(message);
-
-
-
+        System.out.println("newMessage()");
         List<Message> messages = mr.findAll();
-        return messages;
+        return message;
     }
 
     @RequestMapping(value="/messages", method = RequestMethod.GET)

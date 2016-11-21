@@ -9,7 +9,6 @@
     <script type="text/javascript" src="jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-    <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
 
@@ -38,6 +37,8 @@
         if (typeof messages.content === 'undefined' || !messages.content || messages.content == "undefined"){}
         else {
             $("#messagesTable").append('<tr><td><b>' + messages.name + ': </b>' + messages.content + '</td></tr>');
+            var elem = document.getElementById('messagesDiv');
+            elem.scrollTop = elem.scrollHeight;
         }
 
     }
@@ -59,7 +60,8 @@
     function sendMessage() {
         var message = $("#messageInput").val();
         var user = /*[[${session.user}]]*/null;
-        stompClient.send("/topic/newMessage", {}, JSON.stringify({'content': message, 'name': user}));
+        var userId = /*[[${session.id}]]*/null;
+        stompClient.send("/app/newMessage", {}, JSON.stringify({'content': message, 'name': user, 'userId': userId}));
         $("#messageInput").val("");
     }
     });
@@ -71,11 +73,11 @@
         <div class="col-md-8">
             <h1 class="style2">Chat!</h1>
             <div class="chatArea">
-                <div class="messages">
+                <div id="messagesDiv">
                     <table id="messagesTable">
                     </table>
                 </div>
-                        <input id="messageInput" class="form-control" name="content" type="content"  placeholder="Your message" aria-describedby="basic-addon2" style="width:80%;float:left;" autofocus="true" />
+                        <input autocomplete="off" id="messageInput" class="form-control" name="content" type="content"  placeholder="Your message" aria-describedby="basic-addon2" style="width:80%;float:left;" autofocus="true" />
 
 
             </div>
