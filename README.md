@@ -1,10 +1,19 @@
 # Spring-boot-chat
-## Requirements
+A chat application made using Spring Boot. Currently made to compile with Maven.
+## Features
 * One chatroom, unlimited number of participants
 * Users need to register and log in
-* Everything must happen in real-time
-* Features a list of all participants
-
-## If we have time
-* Hybrid mobile app to demostrate API usage
-* Admin tools (muting, banning etc)
+* Chatting happens in realtime using sockets in Javascript
+* Some built-in features of Spring Boot like metrics
+## Implementation
+* Repositories with entities as models
+* Data connection with JPA
+* Standard web controllers
+* View controllers
+* Thymeleaf as view framework
+## How to run
+* Compile the application with Maven in IntelliJ or other IDE
+* Setup a SQL database and change settings in application.properties in src/main/resources
+* Import JDBC driver into the project
+* All tables are created automatically when the application starts
+* Access the application at http://localhost:8080/ (if using IntelliJ)
